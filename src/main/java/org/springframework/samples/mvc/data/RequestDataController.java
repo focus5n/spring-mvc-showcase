@@ -27,6 +27,7 @@ public class RequestDataController {
 		return "Obtained matrix variable 'foo=" + foo + "' from path segment '" + path + "'";
 	}
 
+	// MatrixVariable은 간단하게 생각하면 {사람}:{속성:값} 이런 느낌으로 값을 받는 거다.
 	@GetMapping("{path1}/{path2}")
 	public String withMatrixVariablesMultiple (
 			@PathVariable String path1, @MatrixVariable(name="foo", pathVar="path1") String foo1,
