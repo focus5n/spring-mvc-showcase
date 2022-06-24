@@ -11,4 +11,5 @@ public class SpringMvcShowcaseApplication {
 	}
 
 }
+
 //webapp\WEB-INF\jsp
