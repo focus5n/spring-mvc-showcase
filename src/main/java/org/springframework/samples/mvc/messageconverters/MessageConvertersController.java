@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@SuppressWarnings("ALL")
 @RestController
 @RequestMapping("/messageconverters")
 public class MessageConvertersController {

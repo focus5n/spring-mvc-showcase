@@ -5,6 +5,7 @@ import org.springframework.web.context.request.async.CallableProcessingIntercept
 
 import java.util.concurrent.Callable;
 
+@SuppressWarnings("deprecation")
 public class TimeoutCallableProcessingInterceptor extends CallableProcessingInterceptorAdapter {
 
 	@Override

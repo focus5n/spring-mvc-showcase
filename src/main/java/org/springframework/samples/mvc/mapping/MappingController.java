@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
+@SuppressWarnings("ALL")
 @RestController
 public class MappingController {
 

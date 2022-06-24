@@ -27,9 +27,11 @@ public class FormControllerTests {
 		this.mockMvc = standaloneSetup(new FormController()).setViewResolvers(viewResolver).build();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void submitSuccess() throws Exception {
-		String timezone = getTimezone(1941, 12, 16); 
+		String timezone = getTimezone();
+		//noinspection deprecation
 		this.mockMvc.perform(
 				post("/form")
 					.param("name", "Joe")
@@ -56,7 +58,7 @@ public class FormControllerTests {
 
 	@Test
 	public void submitSuccessAjax() throws Exception {
-		String timezone = getTimezone(1941, 12, 16); 
+		String timezone = getTimezone();
 		this.mockMvc.perform(
 				post("/form")
 					.header("X-Requested-With", "XMLHttpRequest")
@@ -93,12 +95,12 @@ public class FormControllerTests {
 				.andExpect(model().attributeHasFieldErrors("formBean", "name", "age"));
 	}
 	
-	private String getTimezone(int year, int month, int day)
+	private String getTimezone()
 	{
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.YEAR, year);
-		calendar.set(Calendar.MONTH, month);
-		calendar.set(Calendar.DAY_OF_MONTH, day);
+		calendar.set(Calendar.YEAR, 1941);
+		calendar.set(Calendar.MONTH, 12);
+		calendar.set(Calendar.DAY_OF_MONTH, 16);
 		Date date = calendar.getTime();
 		TimeZone timezone = TimeZone.getDefault();
 		boolean inDaylight = timezone.inDaylightTime(date);

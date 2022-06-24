@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @ExtendWith(SpringExtension.class)
 public class MessageConvertersControllerTests extends AbstractContextControllerTests {
 
-	private static String URI = "/messageconverters/{action}";
+	private static final String URI = "/messageconverters/{action}";
 
 	private MockMvc mockMvc;
 
@@ -61,7 +61,7 @@ public class MessageConvertersControllerTests extends AbstractContextControllerT
 				.andExpect(content().string("foo=bar&fruit=apple"));
 	}
 
-	private static String XML =
+	private static final String XML =
 			"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" +
 			"<javaBean><foo>bar</foo><fruit>apple</fruit></javaBean>";
 
@@ -111,7 +111,7 @@ public class MessageConvertersControllerTests extends AbstractContextControllerT
 				.andExpect(jsonPath("$.fruit").value("apple"));
 	}
 
-	private static String ATOM_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+	private static final String ATOM_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
 			"<feed xmlns=\"http://www.w3.org/2005/Atom\"><title>My Atom feed</title></feed>";
 
 //	@Test

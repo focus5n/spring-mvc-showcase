@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping("/views/*")
 public class ViewsController {

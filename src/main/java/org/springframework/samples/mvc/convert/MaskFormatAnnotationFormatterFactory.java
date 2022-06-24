@@ -13,7 +13,7 @@ import java.util.Set;
 public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatterFactory<MaskFormat> {
 
 	public Set<Class<?>> getFieldTypes() {
-		Set<Class<?>> fieldTypes = new HashSet<Class<?>>(1, 1);
+		Set<Class<?>> fieldTypes = new HashSet<>(1, 1);
 		fieldTypes.add(String.class);
 		return fieldTypes;
 	}
@@ -28,7 +28,7 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 	
 	private static class MaskFormatter implements Formatter<String> {
 
-		private javax.swing.text.MaskFormatter delegate;
+		private final javax.swing.text.MaskFormatter delegate;
 
 		public MaskFormatter(String mask) {
 			try {

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -34,7 +34,7 @@ public class ResponseControllerTests {
 	public void responseCharsetAccept() throws Exception {
 		this.mockMvc.perform(
 				get("/response/charset/accept")
-					.accept(new MediaType("text", "plain", Charset.forName("UTF-8"))))
+					.accept(new MediaType("text", "plain", StandardCharsets.UTF_8)))
 				.andExpect(status().isOk())
 				.andDo(print())
 				.andExpect(content().string(

@@ -1,6 +1,5 @@
 package org.springframework.samples.mvc.form;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.format.annotation.NumberFormat;
@@ -8,6 +7,7 @@ import org.springframework.format.annotation.NumberFormat.Style;
 import org.springframework.samples.mvc.convert.MaskFormat;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class FormBean {
 	
-	@NotEmpty
+	@NotBlank
 	private String name;
 	
 	@Min(21)
@@ -128,7 +128,7 @@ public class FormBean {
         if (name != null) {
         	sb.append("'").append(name).append("', ");
         } else {
-        	sb.append(name).append(", ");
+        	sb.append((String) null).append(", ");
         }
         sb.append("age=").append(age).append(", ");
         sb.append("birthDate=").append(birthDate).append(", ");
@@ -136,7 +136,7 @@ public class FormBean {
         if (phone != null) {
         	sb.append("'").append(phone).append("', ");
         } else {
-        	sb.append(phone).append(", ");
+        	sb.append((String) null).append(", ");
         }
         sb.append("currency=").append(currency).append(", ");
         sb.append("percent=").append(percent).append(", ");
@@ -145,7 +145,7 @@ public class FormBean {
         if (inquiryDetails != null) {
         	sb.append("'").append(inquiryDetails).append("', ");
         } else {
-        	sb.append(inquiryDetails).append(", ");
+        	sb.append((String) null).append(", ");
         }
         sb.append("subscribeNewsletter=").append(subscribeNewsletter).append(", ");
         sb.append("additionalInfo=").append(additionalInfo);

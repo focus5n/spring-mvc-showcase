@@ -15,7 +15,7 @@ public class RedirectControllerTests {
     private MockMvc mockMvc;
 
     @BeforeEach
-    public void setup() throws Exception {
+    public void setup() {
         this.mockMvc = standaloneSetup(new RedirectController(new DefaultFormattingConversionService()))
                 .alwaysExpect(status().isFound()).build();
     }

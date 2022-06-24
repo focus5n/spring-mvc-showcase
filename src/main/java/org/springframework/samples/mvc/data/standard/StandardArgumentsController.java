@@ -19,11 +19,9 @@ public class StandardArgumentsController {
 	
 	@GetMapping("/data/standard/request")
 	public String standardRequestArgs(HttpServletRequest request, Principal user, Locale locale) {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("request = ").append(request).append(", ");
-		buffer.append("userPrincipal = ").append(user).append(", ");
-		buffer.append("requestLocale = ").append(locale);
-		return buffer.toString();
+		return "request = " + request + ", " +
+				"userPrincipal = " + user + ", " +
+				"requestLocale = " + locale;
 	}
 
 	@PostMapping("/data/standard/request/reader")
@@ -57,9 +55,7 @@ public class StandardArgumentsController {
 
 	@GetMapping("/data/standard/session")
 	public String session(HttpSession session) {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("session=").append(session);
-		return buffer.toString();
+        return "session=" + session;
 	}
 
 }

@@ -7,6 +7,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import java.util.Objects;
+
 public class CustomArgumentResolver implements HandlerMethodArgumentResolver {
 
 	public boolean supportsParameter(MethodParameter parameter) {
@@ -14,11 +16,10 @@ public class CustomArgumentResolver implements HandlerMethodArgumentResolver {
 	}
 
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
-			NativeWebRequest webRequest, WebDataBinderFactory binderFactory)
-			throws Exception {
+			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
 
 		RequestAttribute attr = parameter.getParameterAnnotation(RequestAttribute.class);
-		return webRequest.getAttribute(attr.value(), WebRequest.SCOPE_REQUEST);
+		return webRequest.getAttribute(Objects.requireNonNull(attr).value(), WebRequest.SCOPE_REQUEST);
 	}
 	
 }

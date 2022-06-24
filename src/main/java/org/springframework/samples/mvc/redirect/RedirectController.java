@@ -13,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.inject.Inject;
 
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping("/redirect")
 public class RedirectController {

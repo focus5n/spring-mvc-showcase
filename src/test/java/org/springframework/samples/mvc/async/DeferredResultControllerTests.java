@@ -21,7 +21,7 @@ public class DeferredResultControllerTests extends AbstractContextControllerTest
 	private MockMvc mockMvc;
 
 	@BeforeEach
-	public void setup() throws Exception {
+	public void setup() {
 		this.mockMvc = webAppContextSetup(this.wac).build();
 	}
 

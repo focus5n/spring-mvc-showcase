@@ -15,12 +15,9 @@ public class CallableController {
 	@GetMapping("/response-body")
 	public @ResponseBody Callable<String> callable() {
 
-		return new Callable<String>() {
-			@Override
-			public String call() throws Exception {
-				Thread.sleep(2000);
-				return "Callable result";
-			}
+		return () -> {
+			Thread.sleep(2000);
+			return "Callable result";
 		};
 	}
 
@@ -56,7 +53,7 @@ public class CallableController {
 			Thread.sleep(2000);
 			return "Callable result";
 		};
-		return new WebAsyncTask<String>(1000, callable);
+		return new WebAsyncTask<>(1000, callable);
 	}
 
 	@ExceptionHandler

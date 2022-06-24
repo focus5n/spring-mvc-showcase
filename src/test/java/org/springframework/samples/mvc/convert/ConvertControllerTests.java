@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.PrintingResultHandler;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +22,7 @@ public class ConvertControllerTests {
 	private MockMvc mockMvc;
 
 	@BeforeEach
-	public void setup() throws Exception {
+	public void setup() {
 		FormattingConversionService cs = new DefaultFormattingConversionService();
 		cs.addFormatterForFieldAnnotation(new MaskFormatAnnotationFormatterFactory());
 
@@ -42,7 +41,7 @@ public class ConvertControllerTests {
 
 	@Test
 	public void date() throws Exception {
-		String timezone = getTimezone(2010, 7, 4);
+		String timezone = getTimezone(2010);
 		this.mockMvc.perform(get("/convert/date/2010-07-04"))
 				.andDo(print())
 				.andExpect(content().string("Converted date Sun Jul 04 00:00:00 " + timezone + " 2010"));
@@ -64,8 +63,8 @@ public class ConvertControllerTests {
 
 	@Test
 	public void formattedCollection() throws Exception {
-		String timezone2010 = getTimezone(2010, 7, 4);
-		String timezone2011 = getTimezone(2011, 7, 4);
+		String timezone2010 = getTimezone(2010);
+		String timezone2011 = getTimezone(2011);
 		this.mockMvc.perform(get("/convert/formattedCollection?values=2010-07-04,2011-07-04"))
 				.andDo(print())
 				.andExpect(content().string(
@@ -97,7 +96,7 @@ public class ConvertControllerTests {
 
 	@Test
 	public void beanDate() throws Exception {
-		String timezone = getTimezone(2010, 7, 4);
+		String timezone = getTimezone(2010);
 		this.mockMvc.perform(get("/convert/bean?date=2010-07-04"))
 				.andDo(print())
 				.andExpect(content().string("Converted JavaBean date=Sun Jul 04 00:00:00 " + timezone + " 2010"));
@@ -119,8 +118,8 @@ public class ConvertControllerTests {
 
 	@Test
 	public void beanFormattedCollection() throws Exception {
-		String timezone2010 = getTimezone(2010, 7, 4);
-		String timezone2011 = getTimezone(2011, 7, 4);
+		String timezone2010 = getTimezone(2010);
+		String timezone2011 = getTimezone(2011);
 		this.mockMvc.perform(get("/convert/bean?formattedList[0]=2010-07-04&formattedList[1]=2011-07-04"))
 				.andDo(print())
 				.andExpect(content().string(
@@ -143,12 +142,12 @@ public class ConvertControllerTests {
 						"Converted JavaBean nested=NestedBean foo=bar list=[NestedBean foo=baz] map={key=NestedBean list=[NestedBean foo=bip]}"));
 	}
 
-	private String getTimezone(int year, int month, int day)
+	private String getTimezone(int year)
 	{
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.YEAR, year);
-		calendar.set(Calendar.MONTH, month);
-		calendar.set(Calendar.DAY_OF_MONTH, day);
+		calendar.set(Calendar.MONTH, 7);
+		calendar.set(Calendar.DAY_OF_MONTH, 4);
 		Date date = calendar.getTime();
 		TimeZone timezone = TimeZone.getDefault();
 		boolean inDaylight = timezone.inDaylightTime(date);

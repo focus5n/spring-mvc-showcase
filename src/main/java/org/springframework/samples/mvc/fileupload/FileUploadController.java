@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping("/fileupload")
 public class FileUploadController {

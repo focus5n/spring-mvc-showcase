@@ -19,7 +19,7 @@ public class StandardArgumentsControllerTests {
 	private MockMvc mockMvc;
 
 	@BeforeEach
-	public void setup() throws Exception {
+	public void setup() {
 		this.mockMvc = standaloneSetup(new StandardArgumentsController())
 				.addFilters(new CharacterEncodingFilter("UTF-8", true))
 				.alwaysExpect(status().isOk()).build();

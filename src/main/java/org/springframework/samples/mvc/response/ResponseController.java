@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@SuppressWarnings("ALL")
 @RestController
 @RequestMapping(value="/response", method=RequestMethod.GET)
 public class ResponseController {

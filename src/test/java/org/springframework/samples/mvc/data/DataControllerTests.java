@@ -22,7 +22,7 @@ public class DataControllerTests extends AbstractContextControllerTests {
 	private MockMvc mockMvc;
 
 	@BeforeEach
-	public void setup() throws Exception {
+	public void setup() {
 		this.mockMvc = webAppContextSetup(this.wac).alwaysExpect(status().isOk()).build();
 	}
 

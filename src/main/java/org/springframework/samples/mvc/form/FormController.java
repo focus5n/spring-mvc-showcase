@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping("/form")
 @SessionAttributes("formBean")
@@ -34,6 +35,7 @@ public class FormController {
 	public void form() {
 	}
 
+	@SuppressWarnings("GrazieInspection")
 	@PostMapping
 	public String processSubmit(@Valid FormBean formBean, BindingResult result, 
 								@ModelAttribute("ajaxRequest") boolean ajaxRequest, 

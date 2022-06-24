@@ -20,7 +20,7 @@ public class CallableControllerTests extends AbstractContextControllerTests {
 	private MockMvc mockMvc;
 
 	@BeforeEach
-	public void setup() throws Exception {
+	public void setup() {
 		this.mockMvc = webAppContextSetup(this.wac).build();
 	}
 

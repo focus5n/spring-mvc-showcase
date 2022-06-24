@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+@SuppressWarnings("ALL")
 @RestController
 @RequestMapping("/class-mapping/*")
 public class ClasslevelMappingController {
