@@ -9,7 +9,7 @@ public class SimpleController {
 
 	@GetMapping("/simple")
 	public String simple() {
-		return "Hello world!";
+		return "Hell SI!";
 	}
 
 }
