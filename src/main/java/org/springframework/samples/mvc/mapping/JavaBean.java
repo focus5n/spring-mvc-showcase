@@ -15,4 +15,5 @@ public class JavaBean {
 	private String foo = "bar";
 
 	private String fruit = "apple";
+
 }
