@@ -1,6 +1,7 @@
 package org.springframework.samples.mvc.mapping;
 
 import org.springframework.http.MediaType;
+import org.springframework.security.web.header.Header;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -69,6 +70,8 @@ public class MappingController {
 		return "Mapped by path!";
 	}
 
+	// HttpServletRequest
+	// request에 담긴 header, body 등 모든 정보를 확인할 수 있음.
 	@GetMapping("/mapping/path/*")
 	public String byPathPattern(HttpServletRequest request) {
 		return "Mapped by path pattern ('" + request.getRequestURI() + "')";
@@ -79,11 +82,13 @@ public class MappingController {
 		return "Mapped by path + method";
 	}
 
+	// /mapping/parameter?foo=bar
 	@GetMapping(path = "/mapping/parameter", params = "foo")
-	public String byParameter() {
-		return "Mapped by path + method + presence of query parameter!";
+	public String byParameter(HttpServletRequest request) {
+		return "Mapped by path + method + presence of query parameter!" + request.getParameter("foo");
 	}
 
+	// /mapping/parameter
 	@GetMapping(path = "/mapping/parameter", params = "!foo")
 	public String byParameterNegation() {
 		return "Mapped by path + method + not presence of query parameter!";
