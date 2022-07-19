@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-mvc-showcase" target="11" />
+      <module name="spring-mvc-showcase" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
